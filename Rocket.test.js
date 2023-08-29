@@ -8,8 +8,10 @@ const Rocket = require("./Rocket");
  * In summary, Test => Code => Refactor => more Test => more Code => again Refactor that's the strategy for Test Driven Development
  */
 
-describe("Testing Chandrayaan-3 Rocket.", () => {
+describe("Checking: Chandrayaan-3 Rocket set-up and initialization.", () => {
   it("Sets up (or constructs) A Rocket correctly.", () => {
     const rocket = new Rocket();
+    expect(rocket).not.toBeNull();
+    expect(rocket).toBeInstanceOf(Rocket);
   });
 });
