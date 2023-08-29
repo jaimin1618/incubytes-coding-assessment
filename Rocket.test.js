@@ -24,7 +24,9 @@ describe("Checking: Chandrayaan-3 Rocket set-up and initialization.", () => {
     const rocket = new Rocket(x, y, z, direction);
     expect(rocket).toBeInstanceOf(Rocket);
     const locations = rocket.getLocation();
+    const rocketDirection = rocket.getDirection();
     expect(locations).toEqual([x, y, z]);
+    expect(rocketDirection).toBe(direction);
   });
 
   it("Returns the current location (x, y, z) axis of rocket.", () => {
@@ -58,5 +60,19 @@ describe("Checking: Move/Turn Commands for Chandrayaan-3 Rocket after initializa
     rocket.move("f");
     rocket.move("f");
     expect(rocket.getY()).toBe(y + 3);
+  });
+
+  it("(Left/Right - l/r command): Moves rocket Left or Right relative to its current direction.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    rocket.toLeftRight("l");
+    rocket.toLeftRight("l");
+    const actual = rocket.getDirection();
+    const expected = "S";
+    expect(actual).toBe(expected);
   });
 });
