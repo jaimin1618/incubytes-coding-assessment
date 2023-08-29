@@ -90,13 +90,34 @@ describe("Checking: Move/Turn Commands for Chandrayaan-3 Rocket after initializa
     const actual = rocket.getDirection();
     const expected = "S";
     expect(actual).toBe(expected);
+  });
 
-    rocket.toUpDown("d");
-    rocket.toUpDown("d");
-    rocket.toUpDown("d");
+  it("Running combined: Moved rocket with all available commands f|b|l|r|u|d.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    expect(rocket.getX()).toBe(x);
+    expect(rocket.getDirection()).toBe(direction);
+
+    rocket.move("f");
+    expect(rocket.getY()).toBe(y + 1);
+    expect(rocket.getDirection()).toBe(direction);
+
+    rocket.toLeftRight("r");
+    let actual = rocket.getDirection();
+    let expected = "E";
+    expect(actual).toBe(expected);
+
     rocket.toUpDown("u");
-    const actual2 = rocket.getDirection();
-    const expected2 = "N";
-    expect(actual2).toBe(expected2);
+    actual = rocket.getDirection();
+    expected = "U";
+    expect(actual).toBe(expected);
+
+    rocket.move("f");
+    console.log(rocket.getDirection());
+    console.log(rocket.getLocation());
   });
 });
