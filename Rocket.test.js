@@ -71,8 +71,10 @@ describe("Checking: Move/Turn Commands for Chandrayaan-3 Rocket after initializa
     const rocket = new Rocket(x, y, z, direction);
     rocket.toLeftRight("l");
     rocket.toLeftRight("l");
+    rocket.toLeftRight("r");
+    rocket.toLeftRight("r");
     const actual = rocket.getDirection();
-    const expected = "S";
+    const expected = "N";
     expect(actual).toBe(expected);
   });
 });
