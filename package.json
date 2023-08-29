@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jaimin Chokhawala",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.6.4"
