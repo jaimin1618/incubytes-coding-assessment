@@ -77,4 +77,26 @@ describe("Checking: Move/Turn Commands for Chandrayaan-3 Rocket after initializa
     const expected = "N";
     expect(actual).toBe(expected);
   });
+
+  it("(Upword/Downword - u/d command): Moves rocket up or down relative to its current direction.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    rocket.toUpDown("u");
+    rocket.toUpDown("u");
+    const actual = rocket.getDirection();
+    const expected = "S";
+    expect(actual).toBe(expected);
+
+    rocket.toUpDown("d");
+    rocket.toUpDown("d");
+    rocket.toUpDown("d");
+    rocket.toUpDown("u");
+    const actual2 = rocket.getDirection();
+    const expected2 = "N";
+    expect(actual2).toBe(expected2);
+  });
 });
