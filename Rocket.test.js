@@ -26,4 +26,16 @@ describe("Checking: Chandrayaan-3 Rocket set-up and initialization.", () => {
     const locations = rocket.getLocation();
     expect(locations).toEqual([x, y, z]);
   });
+
+  it("Returns the current location (x, y, z) axis of rocket.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    expect(rocket.getX()).toBe(x);
+    expect(rocket.getY()).toBe(y);
+    expect(rocket.getZ()).toBe(z);
+  });
 });
