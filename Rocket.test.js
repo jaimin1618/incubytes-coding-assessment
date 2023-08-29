@@ -39,3 +39,16 @@ describe("Checking: Chandrayaan-3 Rocket set-up and initialization.", () => {
     expect(rocket.getZ()).toBe(z);
   });
 });
+
+describe("Checking: Move/Turn Commands for Chandrayaan-3 Rocket after initialization.", () => {
+  it("(Forward command) Moves rocket 1 step ahead in current direction.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    rocket.move("f");
+    expect(rocket.getY()).toBe(y + 1);
+  });
+});
