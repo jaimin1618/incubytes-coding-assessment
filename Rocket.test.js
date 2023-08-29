@@ -14,4 +14,16 @@ describe("Checking: Chandrayaan-3 Rocket set-up and initialization.", () => {
     expect(rocket).not.toBeNull();
     expect(rocket).toBeInstanceOf(Rocket);
   });
+
+  it("Sets up (or constructs) A Rocket with initial location (x, y, z) and direction variables.", () => {
+    let x = 0,
+      y = 0,
+      z = 0;
+    let direction = "N";
+
+    const rocket = new Rocket(x, y, z, direction);
+    expect(rocket).toBeInstanceOf(Rocket);
+    const locations = rocket.getLocation();
+    expect(locations).toEqual([x, y, z]);
+  });
 });
