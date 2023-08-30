@@ -1,4 +1,6 @@
 class Rocket {
+  direction = [0, 0, 0];
+  axis = [0, 0, 0];
   RotateX = [
     [1, 0, 0],
     [0, 0, -1],
@@ -29,9 +31,6 @@ class Rocket {
     [1, 0, 0],
     [0, 0, 1],
   ];
-
-  direction = [0, 0, 0];
-  axis = [0, 0, 0];
 
   constructor(x = 0, y = 0, z = 0, direction = "N") {
     // TODO: assign instance variables according to arguments
@@ -97,7 +96,6 @@ class Rocket {
 
     // 1st - get the index of changing axis (x, y, z)
     let idx = this.direction.find((item) => item === 1 || item === -1);
-    console.log(this.direction);
 
     // 2nd - change the axis according to "f" or "b" command
     if (input === "f") {
@@ -127,9 +125,9 @@ class Rocket {
         this.direction = newDirection;
       } else if (this.getDirection() === "U" || this.getDirection() === "D") {
         const newDirection = new Array(3).fill(0);
-        for (let i = 0; i < NegRotateX.length; ++i) {
+        for (let i = 0; i < this.NegRotateX.length; ++i) {
           for (let j = 0; j < this.direction.length; ++j) {
-            newDirection[i] += this.direction[j] * NegRotateX[i][j];
+            newDirection[i] += this.direction[j] * this.NegRotateX[i][j];
           }
         }
 
@@ -152,9 +150,9 @@ class Rocket {
         this.direction = newDirection;
       } else if (this.getDirection() === "U" || this.getDirection() === "D") {
         const newDirection = new Array(3).fill(0);
-        for (let i = 0; i < RotateX.length; ++i) {
+        for (let i = 0; i < this.RotateX.length; ++i) {
           for (let j = 0; j < this.direction.length; ++j) {
-            newDirection[i] += this.direction[j] * RocketX[i][j];
+            newDirection[i] += this.direction[j] * this.RocketX[i][j];
           }
         }
 
@@ -171,9 +169,9 @@ class Rocket {
       (this.getDirection() === "D" && input === "d")
     ) {
       const newDirection = new Array(3).fill(0);
-      for (let i = 0; i < RotateX.length; ++i) {
+      for (let i = 0; i < this.NegRotateX.length; ++i) {
         for (let j = 0; j < this.direction.length; ++j) {
-          newDirection[i] += this.direction[j] * RotateX[i][j];
+          newDirection[i] += this.direction[j] * this.NegRotateX[i][j];
         }
       }
 
@@ -184,16 +182,10 @@ class Rocket {
       (this.getDirection() === "U" && input === "d") ||
       (this.getDirection() === "D" && input === "u")
     ) {
-      const NegRotateX = [
-        [1, 0, 0],
-        [0, 0, 1],
-        [0, -1, 0],
-      ];
-
       const newDirection = new Array(3).fill(0);
-      for (let i = 0; i < NegRotateX.length; ++i) {
+      for (let i = 0; i < this.RotateX.length; ++i) {
         for (let j = 0; j < this.direction.length; ++j) {
-          newDirection[i] += this.direction[j] * NegRotateX[i][j];
+          newDirection[i] += this.direction[j] * this.RotateX[i][j];
         }
       }
 
